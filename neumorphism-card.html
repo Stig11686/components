@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hovr Card</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #ebf5fc;
+            font-family: sans-serif;
+            font-size: 62.5%;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 1100px;
+        }
+
+        .container .card {
+            width: 320px;
+            margin: 20px;
+            padding: 40px 30px;
+            background: #ebf5fc;
+            box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
+                        6px 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container .card:hover {
+            box-shadow: inset -6px -6px 10px rgba(255, 255, 255, .5),
+                        inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .container .card .imgBx {
+            position: relative;
+            text-align: center;
+
+        }
+        
+        .container .card .imgBx img {
+            max-width: 120px;
+        }
+        
+        .container .card .contentBx {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .container .card .contentBx h2 {
+            color: #32a3b1;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+        }
+
+        .container .card .contentBx p {
+            color: #32a3b1;
+        }
+
+        .container .card .contentBx a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 40px;
+            color: #32a3b1;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+                        4px 4px 15px rgba(0,0,0, 0.1);
+        }
+
+        .container .card .contentBx a:hover{
+            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 1),
+                        inset 4px 4px 10px rgba(0,0,0, 0.5);
+        }
+
+        .container .card a:hover span {
+            display: block;
+            transform: scale(0.98);
+        }
+
+        .container .card:hover .imgBx,
+        .container .card:hover .contentBx {
+            transform: scale(0.98);
+        }
+
+        .neon-buttons {
+            background: #050801;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: consolas;
+        }
+
+        .neon-buttons a {
+            position: relative;
+            display: inline-block;
+            padding: 25px 30px;
+            margin: 40px 0;
+            color: #03e9f4;
+            font-size: 24px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: 0.5s;
+            letter-spacing: 4px;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+            
+        }
+
+        .neon-buttons a:nth-child(1) {
+            filter: hue-rotate(290deg)
+        }
+
+        .neon-buttons a:nth-child(3) {
+            filter: hue-rotate(110deg)
+        }
+
+        .neon-buttons a:hover {
+            background: #03e9f4;
+            color: #050801;
+            box-shadow: 0 0 5px #03e9f4,
+                        0 0 25px #03e9f4,
+                        0 0 50px #03e9f4,
+                        0 0 200px #03e9f4;
+        }
+
+        .neon-buttons a span {
+            position: absolute;
+            display: block;
+        }
+
+        .neon-buttons a span:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: animate1 1s linear infinite;
+        }
+
+        @keyframes animate1 {
+            0% {
+                left: -100%;
+            }
+
+            50%, 100% {
+                left: 100%;
+            }
+        }
+
+        .neon-buttons a span:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #03e9f4);
+            animation: animate2 1s linear infinite;
+            animation-delay: 0.25s;
+        }
+
+        @keyframes animate2 {
+            0% {
+                top: -100%;
+            }
+
+            50%, 100% {
+                top: 100%;
+            }
+        }
+
+        .neon-buttons a span:nth-child(3) {
+            bottom: 0%;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #03e9f4);
+            animation: animate3 1s linear infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes animate3 {
+            0% {
+                right: -100%;
+            }
+
+            50%, 100% {
+                right: 100%;
+            }
+        }
+
+        .neon-buttons a span:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #03e9f4);
+            animation: animate4 1s linear infinite;
+            animation-delay: 0.75s;
+        }
+
+        @keyframes animate4 {
+            0% {
+                bottom: -100%;
+            }
+
+            50%,100% {
+                bottom: 100%;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="imgBx">
+                <img src="" alt="">
+            </div>
+            <div class="contentBx">
+                <h2>BFCUnofficial</h2>
+                <p>Lorem ipsum dolor sit amet 
+                consectetur adipisicing elit. Voluptate
+                vero laudantium autem sapiente quisquam
+                eveniet, beatae fugiat? Qui, et tenetur!</p>
+                <a href="#"><span>Read More</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="neon-buttons">
+        <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        Neon Button
+        </a>
+        <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        Neon Button
+        </a>
+        <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        Neon Button
+        </a>
+        
+    </div>
+    
+</body>
+</html>
