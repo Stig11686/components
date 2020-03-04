@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Javascript Projects Day 8!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contentBx {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            width: 90%;
+            border: 10px solid royalblue;
+            
+        }
+
+        .contentBx img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+
+        .box {
+            position: absolute;
+            top: 50%;
+            height: 100px;
+            width: 100px;
+            background-color: royalblue;
+            z-index: 5;
+            color: #fff;
+            font-size: 80px;
+            font-weight: 900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.5s ease;
+        }
+
+        .next {
+            right: -50px;
+            z-index: 5;
+        }
+
+        .previous {
+            left: -50px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contentBx">
+        <img src="/imgs/bg1.jpg" alt="">
+        <div class='box next'>></div>
+        <div class='box previous'><</div>
+    </div>
+
+    
+
+
+    <script>
+        const images = ['bg1', 'bg2', 'bg3', 'bg4'];
+        const image = document.querySelector('.contentBx img');
+        const nextBtn = document.querySelector('.next');
+        const prevBtn = document.querySelector('.previous');
+        let count = 0;
+
+        nextBtn.addEventListener('click', nextImg);
+        prevBtn.addEventListener('click', prevImg);
+
+        function nextImg(){
+            
+            if(count == images.length - 1){
+                count = 0;
+            } else {
+              count++  
+            } 
+
+            image.src = `/imgs/${images[count]}.jpg`;
+
+            console.log('Next!');
+
+        }
+
+        function prevImg(){
+
+            if(count == 0){
+               count = images.length - 1;
+            } else {
+              count--  
+            }
+
+            image.src = `/imgs/${images[count]}.jpg`;
+
+            console.log('previous!')
+        }
+    
+    </script>
+    
+</body>
+</html>

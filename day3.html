@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Days of JS - Day 3</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .outer {
+            background-color: #666;
+            height: 500px;
+            width: 500px;
+            position: relative;
+        }
+
+        .inner {
+            position: absolute;
+            top: 7.5%;
+            left: 7.5%;
+            width: 85%;
+            height: 85%;
+            background-color: lightslategray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            background-color: goldenrod;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            font-family: cursive;
+            font-size: 2em;
+            cursor: pointer;
+            position: absolute;
+            top: 5%;
+        }
+
+        .text {
+            position: absolute;
+            top: 25%;
+            height: 70%;
+            width: 75%;
+            border: 1px solid black;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class='outer'>
+        <div class="inner">
+            <button>Generate Quote</button>
+            <div class="text">
+                <p class="quote"></p>
+                <p class="author"></p>                
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        const quotes = [{
+            author: 'Steve',
+            quote: 'Work is shit and then you die'
+        },
+        {
+            author: 'Jodie',
+            quote: "I'm a worrier"
+        }];
+
+        const button = document.querySelector('button');
+        const quote = document.querySelector('.quote')
+        const author = document.querySelector('.author');
+
+        button.addEventListener('click', function(){
+            let rnd = Math.floor(Math.random() * quotes.length);
+            quote.innerHTML = `<span class="quotation">"</span>${quotes[rnd].quote}`;
+            author.innerHTML = quotes[rnd].author;
+        })
+
+
+    </script>
+    
+</body>
+</html>

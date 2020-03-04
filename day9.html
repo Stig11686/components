@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Days of JS Day 9! Testimonials!</title>
+    <script src="https://kit.fontawesome.com/c7b754904c.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-image: url('/imgs/questionbcg.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: monospace;
+            
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1;
+        }
+
+        .headline {
+            position: absolute;
+            top: 0;
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .headline span {
+            text-transform: uppercase;
+            color: orangered;
+            font-size: 25px;
+            
+        }
+
+        .contentBx {
+            margin-top: 100px;
+            position: relative;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 75%;
+            z-index: 2;
+            border: 2px solid #fff;
+        
+        }
+
+        .contentBx img {
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 45%;
+            width: 225px;
+            height: 125px;
+        }
+
+        .contentBx h2 {
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            margin: 100px 10px 20px 10px;
+            font-size: 26px;
+            
+        }
+
+        .rating {
+            margin-bottom: 20px;
+            height: 150px;
+        }
+
+        .fas, .far {
+            color: orangered;
+            font-size: 30px;
+        
+        }
+
+        .fa-star {
+            display: inline;
+        }
+
+        .fa-star-half-alt {
+            display: inline;
+        }
+
+        .testimonial {
+            color: #fff;
+            margin: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .prevBtn, .nextBtn {
+            border: 1px solid orangered;
+            border-radius: 40%;
+            padding: 10px;
+        }
+
+        .prevBtn {
+            position: absolute;
+            left: -10%;
+        }
+
+        .fa-caret-left {
+            text-align: left;
+        }
+
+        .nextBtn {
+            position: absolute;
+            right: -10%;
+        }
+
+        .quotation {
+            color: orangered;
+            font-size: 80px;
+            transform: skew(40deg);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="headline">
+        <h1><span>CLIENT</span><h1>
+        <h1>TESTIMONIALS</h1>
+    </div>
+    
+
+    <div class="contentBx">
+        <img src="/imgs/customer-0.jpg" alt="Customer Picture">
+        <h2 class="name">Steve</h2>
+
+        <div class="rating">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star-half-alt"></i></span>
+            <i class="far fa-star"></i>
+        </div>
+        
+        <p class="testimonial">Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Consequuntur sequi 
+        animi similique totam officiis, incidunt deserunt
+        ab magnam doloremque est.</p>
+        <span class="quotation">"</span>
+        <div class="prevBtn"><i class="fas fa-caret-left"></i></div>
+        <div class="nextBtn"><i class="fas fa-caret-right"></i></div>
+    </div>
+
+    <script>
+        const prevBtn = document.querySelector('.prevBtn');
+        const nextBtn = document.querySelector('.nextBtn');
+        let rating = document.querySelector('.rating');
+        let count = 0;
+        const name = document.querySelector('.name');
+        const image = document.querySelector('.contentBx img');
+        const testimonial = document.querySelector('.testimonial');
+        let people = [];
+
+        function Person(name, testimonial, rating, image) {
+            this.name = name;
+            this.testimonial = testimonial;
+            this.rating = rating;
+            this.image = image;
+        }
+
+        function createPerson(name, testimonial, rating, image){
+            let fullImg = `/imgs/customer-${image}.jpg`;
+            let person = new Person(name, testimonial, rating, fullImg);
+
+            people.push(person);
+        }
+
+        nextBtn.addEventListener('click', function(){
+
+        if(count == people.length - 1){
+            count = 0;
+        } else {
+            count++;
+        }
+
+        image.src= people[count].image;
+        testimonial.textContent = people[count].testimonial;
+        name.textContent = people[count].name;
+        });
+
+        prevBtn.addEventListener('click', function(){
+
+        if(count == 0){
+            count = people.length - 1;
+        } else {
+            count--;
+        }
+        console.log(people[count]);
+        image.src= people[count].image;
+        testimonial.textContent = people[count].testimonial;
+        name.textContent = people[count].name;
+})
+
+        createPerson('Steve', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sequi animi similique totam officiis, incidunt deserunt ab magnam doloremque est.', 3.5, 0);
+        createPerson('Jodie', 'I love this its so clever!', 4.5, 1);
+        createPerson('Brady', 'Woof!', 2.5, 2);
+        createPerson('Baby Dave', 'Feed me!', 4, 3);
+
+
+
+    </script>
+</body>
+</html>
