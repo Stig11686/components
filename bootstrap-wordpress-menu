@@ -1,0 +1,56 @@
+<section class="mobile-menu">
+	<div class="mobile-menu-close">X</div>
+	<div lc-helper="shortcode" class="live-shortcode d-flex justify-content-around align-items-center">[lc_nav_menu theme_location="primary" container_class="" container_id="" menu_class="navbar-nav"]
+	</div>
+</section>
+
+.mobile-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(191, 19, 23);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	height: 100vh;
+	width: 80vw;
+	z-index: 1000;
+	transition: all 0.5s ease-in-out;
+	transform: translateX(-100%);
+	z-index: 9999;
+}
+
+.mobile-menu-close {
+	color: #000;
+	font-size: 40px;
+	font-weight: 700;
+	position: fixed;
+	top: 20px;
+	right: 40px;
+}
+
+.navbar-open {
+	padding: 10px;
+	background: transparent;
+	outline: none;
+	border: none;
+	z-index: 10000;
+	cursor: pointer;
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+	const menuOpen = document.querySelector('.navbar-open');
+	const menuClose = document.querySelector('.mobile-menu-close');
+	const menu = document.querySelector('.mobile-menu');
+
+	menuOpen.addEventListener('click', function(){
+		menu.style.transform = 'translateX(0)';
+	})
+
+	menuClose.addEventListener('click', function(e){
+		menu.style.transform = 'translateX(-100%)';
+	})
+})
